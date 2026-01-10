@@ -2,21 +2,82 @@ name: Data Collection
 
 on:
   schedule:
+    # Weather: Every 12 hours (0:00, 12:00 UTC)
     - cron: '0 0,12 * * *'
+    # News: Every 6 hours (0:00, 6:00, 12:00, 18:00 UTC)
     - cron: '0 0,6,12,18 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Allow manual trigger
 
 jobs:
   collect-weather:
     runs-on: ubuntu-latest
+    if: github.event.schedule == '0 0,12 * * *' || github.event_name == 'workflow_dispatch'
+    
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install httpx supabase python-dotenv
-      - run: cd backend/collectors && python weather_collector.py
+          
+      - name: Install dependencies
+        run: |
+          pip install httpx supabase python-dotenv
+          
+      - name: Run Weather Collector
         env:
           OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          cd backend/collectors
+          python weather_collector.py
+
+  collect-news:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 0,6,12,18 * * *' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          
+      - name: Install dependencies
+        run: |
+          pip install httpx supabase python-dotenv
+          
+      - name: Run News Collector
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          cd backend/collectors
+          python news_collector.py
+
+  collect-vessels:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 */4 * * *' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          
+      - name: Install dependencies
+        run: |
+          pip install httpx supabase python-dotenv
+          
+      - name: Run Vessel Collector
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          cd backend/collectors
+          python vessel_collector.py
