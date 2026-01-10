@@ -28,6 +28,13 @@ scikit-learn==1.5.0
 
 # Utilities
 python-dateutil==2.9.0
+schedule==1.2.0
+requests==2.32.0
+
+# Web Scraping & Parsing
+beautifulsoup4==4.12.0
+feedparser==6.0.10
+lxml==5.1.0
 
 # Development
 pytest==8.3.0

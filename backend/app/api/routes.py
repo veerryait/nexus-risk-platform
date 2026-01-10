@@ -1,54 +1,98 @@
 """
-Routes API Endpoints
+Shipping Routes API Endpoints
 """
 
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
+from datetime import datetime
 
 from app.core.database import get_db
-from app.schemas.route import RouteResponse, RouteWithRisk
 
 router = APIRouter()
 
 
-# Taiwan to US West Coast routes
-ROUTES = [
-    {"id": 1, "origin": "Kaohsiung, Taiwan", "destination": "Los Angeles, CA", "distance_nm": 6500, "avg_transit_days": 16},
-    {"id": 2, "origin": "Kaohsiung, Taiwan", "destination": "Long Beach, CA", "distance_nm": 6500, "avg_transit_days": 16},
-    {"id": 3, "origin": "Keelung, Taiwan", "destination": "Oakland, CA", "distance_nm": 6200, "avg_transit_days": 15},
-    {"id": 4, "origin": "Taichung, Taiwan", "destination": "Seattle, WA", "distance_nm": 5800, "avg_transit_days": 14},
-    {"id": 5, "origin": "Kaohsiung, Taiwan", "destination": "San Francisco, CA", "distance_nm": 6400, "avg_transit_days": 16},
+# Route definitions for Taiwan to US West Coast
+SHIPPING_ROUTES = [
+    {
+        "id": 1,
+        "name": "Kaohsiung → Los Angeles",
+        "origin": {"port": "Kaohsiung", "country": "Taiwan", "code": "TWKHH"},
+        "destination": {"port": "Los Angeles", "country": "USA", "code": "USLAX"},
+        "distance_nm": 6150,
+        "typical_days": 14,
+        "transit_points": ["Pacific Ocean"],
+    },
+    {
+        "id": 2,
+        "name": "Kaohsiung → Long Beach",
+        "origin": {"port": "Kaohsiung", "country": "Taiwan", "code": "TWKHH"},
+        "destination": {"port": "Long Beach", "country": "USA", "code": "USLGB"},
+        "distance_nm": 6150,
+        "typical_days": 14,
+        "transit_points": ["Pacific Ocean"],
+    },
+    {
+        "id": 3,
+        "name": "Kaohsiung → Oakland",
+        "origin": {"port": "Kaohsiung", "country": "Taiwan", "code": "TWKHH"},
+        "destination": {"port": "Oakland", "country": "USA", "code": "USOAK"},
+        "distance_nm": 5950,
+        "typical_days": 13,
+        "transit_points": ["Pacific Ocean"],
+    },
+    {
+        "id": 4,
+        "name": "Taipei → Los Angeles",
+        "origin": {"port": "Taipei", "country": "Taiwan", "code": "TWTPE"},
+        "destination": {"port": "Los Angeles", "country": "USA", "code": "USLAX"},
+        "distance_nm": 6300,
+        "typical_days": 15,
+        "transit_points": ["Pacific Ocean"],
+    },
+    {
+        "id": 5,
+        "name": "Kaohsiung → Seattle",
+        "origin": {"port": "Kaohsiung", "country": "Taiwan", "code": "TWKHH"},
+        "destination": {"port": "Seattle", "country": "USA", "code": "USSEA"},
+        "distance_nm": 5200,
+        "typical_days": 12,
+        "transit_points": ["Pacific Ocean"],
+    },
 ]
 
 
-@router.get("/", response_model=List[RouteResponse])
-async def get_routes(db: Session = Depends(get_db)):
-    """Get all tracked routes"""
-    return ROUTES
+@router.get("/")
+async def get_routes(
+    skip: int = Query(0, ge=0),
+    limit: int = Query(10, ge=1, le=50),
+    db: Session = Depends(get_db)
+):
+    """Get list of monitored shipping routes"""
+    return SHIPPING_ROUTES[skip:skip + limit]
 
 
-@router.get("/{route_id}", response_model=RouteResponse)
+@router.get("/{route_id}")
 async def get_route(route_id: int, db: Session = Depends(get_db)):
-    """Get route by ID"""
-    for route in ROUTES:
+    """Get a specific route by ID"""
+    for route in SHIPPING_ROUTES:
         if route["id"] == route_id:
             return route
-    raise HTTPException(status_code=404, detail="Route not found")
+    return {"error": f"Route {route_id} not found"}
 
 
-@router.get("/{route_id}/risk", response_model=RouteWithRisk)
-async def get_route_risk(route_id: int, db: Session = Depends(get_db)):
-    """Get route with current risk assessment"""
-    for route in ROUTES:
+@router.get("/{route_id}/details")
+async def get_route_details(route_id: int, db: Session = Depends(get_db)):
+    """Get detailed information about a shipping route"""
+    for route in SHIPPING_ROUTES:
         if route["id"] == route_id:
             return {
                 **route,
-                "risk_score": 0.35,
-                "risk_factors": [
-                    {"factor": "weather", "impact": 0.15},
-                    {"factor": "port_congestion", "impact": 0.20}
-                ],
-                "predicted_delay_hours": 12
+                "details": {
+                    "carriers": ["Evergreen", "Yang Ming", "Wan Hai"],
+                    "cargo_types": ["Semiconductors", "Electronics", "Manufacturing"],
+                    "frequency": "Daily departures",
+                    "last_updated": datetime.utcnow().isoformat(),
+                }
             }
-    raise HTTPException(status_code=404, detail="Route not found")
+    return {"error": f"Route {route_id} not found"}

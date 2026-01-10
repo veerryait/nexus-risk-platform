@@ -1,0 +1,52 @@
+{
+  "port_activity": {
+    "records": 238224,
+    "path": "/Users/veerryait11/Documents/Project/Nexus Risk Platform/backend/data/processed/filtered_port_activity.csv",
+    "ports": [
+      "Presque Isle",
+      "Providence",
+      "Baltimore",
+      "Rouge River",
+      "San Diego",
+      "San Francisco",
+      "Sandusky",
+      "Barbor's Point",
+      "Savannah",
+      "Searsport",
+      "Seattle",
+      "South Louisiana",
+      "Stockton",
+      "Duluth",
+      "Swanport",
+      "Sydney",
+      "Tacoma",
+      "Taichung",
+      "Tampa",
+      "Baton Rouge"
+    ]
+  },
+  "supply_chain": {
+    "records": 1645,
+    "path": "/Users/veerryait11/Documents/Project/Nexus Risk Platform/backend/data/processed/filtered_supply_chain.csv",
+    "delay_stats": {
+      "avg_delay_days": 0.47,
+      "max_delay_days": 9,
+      "on_time_rate": 0.882
+    },
+    "routes": [
+      {
+        "Origin_City": "Shanghai, CN",
+        "Destination_City": "Los Angeles, US"
+      }
+    ]
+  },
+  "port_performance": {
+    "records": 803,
+    "path": "/Users/veerryait11/Documents/Project/Nexus Risk Platform/backend/data/processed/port_performance.csv"
+  },
+  "logistics": {
+    "records": 32065,
+    "path": "/Users/veerryait11/Documents/Project/Nexus Risk Platform/backend/data/processed/logistics_data.csv",
+    "avg_delay_probability": 0.699
+  }
+}
