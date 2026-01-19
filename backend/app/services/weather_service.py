@@ -52,7 +52,9 @@ class WeatherService:
             response.raise_for_status()
             return response.json()
         except Exception as e:
-            print(f"Weather API error: {e}")
+            # Log privately, don't expose API error details
+            import logging
+            logging.getLogger("nexus.security").error(f"Weather API error: {type(e).__name__}")
             return self._mock_weather_data(lat, lon)
     
     async def get_route_weather(self) -> List[Dict]:

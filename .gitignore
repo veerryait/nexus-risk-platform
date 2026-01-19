@@ -35,6 +35,7 @@ build/
 # Logs
 logs/
 *.log
+backend/logs/
 
 # Database
 *.sqlite3
@@ -44,3 +45,9 @@ logs/
 *.pem
 *.key
 secrets/
+backend/data/raw/*.csv
+
+# Large files (exceed GitHub 100MB limit)
+*.mov
+*.mp4
+backend/app/ml/models/anomaly_isolation_forest.joblib

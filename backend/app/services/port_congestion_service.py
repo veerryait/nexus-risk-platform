@@ -69,7 +69,9 @@ class PortCongestionService:
             # Attempt to scrape real data
             data = await self._scrape_port_data(port_id, port_info)
         except Exception as e:
-            print(f"Port scraping error for {port_id}: {e}")
+            # Log privately, don't expose scraping error details
+            import logging
+            logging.getLogger("nexus.security").error(f"Port scraping error: {type(e).__name__}")
             # Fall back to estimated data based on typical patterns
             data = self._estimate_congestion(port_id)
         

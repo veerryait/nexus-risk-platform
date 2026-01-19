@@ -1,0 +1,618 @@
+/* ==========================================
+   NEXUS RISK PLATFORM - FUTURISTIC UI THEME
+   Font: Orbitron & Space Mono (loaded in globals.css)
+   ========================================== */
+
+:root {
+    /* Neon Color Palette */
+    --neon-cyan: #00f0ff;
+    --neon-magenta: #ff00ff;
+    --neon-blue: #0066ff;
+    --neon-purple: #9d00ff;
+    --neon-pink: #ff0099;
+    --neon-green: #00ff88;
+    --neon-orange: #ff6600;
+    --neon-red: #ff0044;
+
+    /* Holographic Gradients */
+    --holo-gradient: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-magenta) 50%, var(--neon-blue) 100%);
+    --holo-gradient-2: linear-gradient(45deg, var(--neon-purple) 0%, var(--neon-cyan) 50%, var(--neon-green) 100%);
+    --holo-gradient-3: linear-gradient(90deg, var(--neon-pink) 0%, var(--neon-orange) 100%);
+
+    /* Glass Effects */
+    --glass-bg: rgba(10, 10, 20, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-glow: 0 0 30px rgba(0, 240, 255, 0.15);
+
+    /* Shadows */
+    --neon-shadow-cyan: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.3);
+    --neon-shadow-magenta: 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3);
+    --neon-shadow-green: 0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3);
+}
+
+/* ---- BASE OVERRIDES ---- */
+body {
+    font-family: 'Space Mono', 'SF Mono', monospace;
+    background: linear-gradient(135deg, #0a0a14 0%, #0d0d1a 50%, #050510 100%);
+    min-height: 100vh;
+}
+
+/* Futuristic Headings */
+h1,
+h2,
+h3,
+.font-futuristic {
+    font-family: 'Orbitron', sans-serif !important;
+    letter-spacing: 0.05em;
+}
+
+/* ---- GLASSMORPHISM CARDS ---- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* ---- NEON GLOW EFFECTS ---- */
+.neon-text {
+    color: var(--neon-cyan);
+    text-shadow:
+        0 0 5px var(--neon-cyan),
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan);
+}
+
+.neon-text-magenta {
+    color: var(--neon-magenta);
+    text-shadow:
+        0 0 5px var(--neon-magenta),
+        0 0 10px var(--neon-magenta),
+        0 0 20px var(--neon-magenta);
+}
+
+.neon-border {
+    border: 1px solid var(--neon-cyan);
+    box-shadow:
+        0 0 5px var(--neon-cyan),
+        inset 0 0 5px rgba(0, 240, 255, 0.1);
+}
+
+/* ---- HOLOGRAPHIC GRADIENT TEXT ---- */
+.holo-text {
+    background: var(--holo-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holo-shift 3s ease-in-out infinite;
+}
+
+@keyframes holo-shift {
+
+    0%,
+    100% {
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        filter: hue-rotate(30deg);
+    }
+}
+
+/* ---- FLOATING ANIMATION ---- */
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ---- PULSE ANIMATION ---- */
+.pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan);
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+        opacity: 0.8;
+    }
+}
+
+/* ---- 3D CARD HOVER ---- */
+.card-3d {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card-3d:hover {
+    transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(0, 240, 255, 0.2);
+}
+
+/* ---- SCAN LINE EFFECT ---- */
+.scanlines {
+    position: relative;
+    overflow: hidden;
+}
+
+.scanlines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.1) 2px,
+            rgba(0, 0, 0, 0.1) 4px);
+    pointer-events: none;
+    animation: scanline-move 10s linear infinite;
+}
+
+@keyframes scanline-move {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* ---- ANIMATED GRID BACKGROUND ---- */
+.grid-bg {
+    background-image:
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+/* ---- CIRCUIT BOARD PATTERN ---- */
+.circuit-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%2300f0ff' stroke-width='0.5' stroke-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---- NEON BUTTONS ---- */
+.btn-neon {
+    position: relative;
+    padding: 12px 24px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    background: transparent;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-neon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    transition: left 0.5s;
+}
+
+.btn-neon:hover {
+    color: #000;
+    background: var(--neon-cyan);
+    box-shadow: var(--neon-shadow-cyan);
+}
+
+.btn-neon:hover::before {
+    left: 100%;
+}
+
+/* ---- HOLOGRAPHIC ALERT ---- */
+.holo-alert {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 0, 100, 0.1) 0%, rgba(255, 0, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 0, 100, 0.3);
+    border-radius: 16px;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.holo-alert::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(255, 0, 100, 0.1), transparent);
+    animation: rotate-glow 4s linear infinite;
+}
+
+@keyframes rotate-glow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- ANIMATED COUNTER ---- */
+.counter-flip {
+    display: inline-block;
+    animation: flip-in 0.5s ease-out;
+}
+
+@keyframes flip-in {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotateX(0);
+        opacity: 1;
+    }
+}
+
+/* ---- PROGRESS RING ---- */
+.progress-ring {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.progress-ring circle {
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-ring .bg {
+    stroke: rgba(255, 255, 255, 0.1);
+}
+
+.progress-ring .progress {
+    stroke: url(#gradient);
+    filter: drop-shadow(0 0 6px var(--neon-cyan));
+}
+
+/* ---- PARTICLE EFFECT ---- */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-cyan);
+    animation: particle-float 10s infinite;
+}
+
+@keyframes particle-float {
+
+    0%,
+    100% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ---- RADAR ANIMATION ---- */
+.radar {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.radar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: conic-gradient(from 0deg, transparent 0deg, var(--neon-cyan) 30deg, transparent 60deg);
+    animation: radar-sweep 3s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes radar-sweep {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- DATA FLOW LINE ---- */
+.data-flow {
+    position: relative;
+    height: 2px;
+    background: rgba(0, 240, 255, 0.2);
+    overflow: hidden;
+}
+
+.data-flow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    animation: flow 2s linear infinite;
+}
+
+@keyframes flow {
+    0% {
+        left: -50%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* ---- HEXAGON PATTERN ---- */
+.hex-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2300f0ff' fill-opacity='0.05'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---- TOOLTIP FUTURISTIC ---- */
+.tooltip-futuristic {
+    position: relative;
+    background: rgba(0, 20, 40, 0.95);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow:
+        0 0 20px rgba(0, 240, 255, 0.2),
+        inset 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+.tooltip-futuristic::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 20px;
+    width: 20px;
+    height: 2px;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* ---- ANIMATED BORDER ---- */
+.animated-border {
+    position: relative;
+    background: var(--glass-bg);
+    border-radius: 16px;
+    padding: 2px;
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: var(--holo-gradient);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: border-rotate 4s linear infinite;
+}
+
+@keyframes border-rotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* ---- NUMBER FLIP ANIMATION ---- */
+.number-flip {
+    display: inline-block;
+    perspective: 400px;
+}
+
+.number-flip span {
+    display: inline-block;
+    animation: number-roll 0.4s ease-out;
+}
+
+@keyframes number-roll {
+    0% {
+        transform: translateY(-100%) rotateX(90deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0) rotateX(0);
+        opacity: 1;
+    }
+}
+
+/* ---- RING INDICATOR ---- */
+.ring-indicator {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.ring-indicator::before,
+.ring-indicator::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.ring-indicator::before {
+    inset: 0;
+    border: 3px solid rgba(0, 240, 255, 0.2);
+}
+
+.ring-indicator::after {
+    inset: 5px;
+    border: 2px solid var(--neon-cyan);
+    border-top-color: transparent;
+    animation: ring-spin 1.5s linear infinite;
+}
+
+@keyframes ring-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- AMBIENT GLOW ---- */
+.ambient-glow {
+    box-shadow:
+        0 0 60px -15px rgba(0, 240, 255, 0.3),
+        0 0 100px -30px rgba(157, 0, 255, 0.2);
+}
+
+/* ---- CORNER ACCENTS ---- */
+.corner-accents {
+    position: relative;
+}
+
+.corner-accents::before,
+.corner-accents::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--neon-cyan);
+}
+
+.corner-accents::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-accents::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/* ---- STARFIELD BACKGROUND ---- */
+.starfield {
+    background:
+        radial-gradient(2px 2px at 20px 30px, white, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 90px 40px, white, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 160px 120px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 230px 90px, white, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 300px 150px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0));
+    background-repeat: repeat;
+    background-size: 350px 200px;
+    animation: stars-move 100s linear infinite;
+}
+
+@keyframes stars-move {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 350px 0;
+    }
+}

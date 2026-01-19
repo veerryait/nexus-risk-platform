@@ -91,7 +91,9 @@ class FREDService:
             return observations
             
         except Exception as e:
-            print(f"FRED API error: {e}")
+            # Log privately, don't expose API error details
+            import logging
+            logging.getLogger("nexus.security").error(f"FRED API error: {type(e).__name__}")
             return self._mock_series_data(series_id, limit)
     
     async def get_trade_indicators(self) -> Dict:

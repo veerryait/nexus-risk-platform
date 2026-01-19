@@ -1,0 +1,814 @@
+{
+  "LOW_RISK - Normal Conditions": {
+    "prediction": "on_time",
+    "probability_on_time": 1.0,
+    "probability_delayed": 0.0,
+    "predicted_delay_days": 0.4695223803555719,
+    "top_factors": [
+      {
+        "feature": "eta_delay_days",
+        "value": 0.0,
+        "impact": 0.03491970681614541,
+        "direction": "positive"
+      },
+      {
+        "feature": "speed_anomaly_pct",
+        "value": 0.0,
+        "impact": 0.031099805991332493,
+        "direction": "positive"
+      },
+      {
+        "feature": "position_deviation_pct",
+        "value": 0.0,
+        "impact": 0.029098779248403827,
+        "direction": "positive"
+      },
+      {
+        "feature": "vessel_speed_knots",
+        "value": 19.3,
+        "impact": 0.013498710338335137,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_risk_score_7day",
+        "value": 0.15,
+        "impact": 0.002689949889219391,
+        "direction": "positive"
+      }
+    ],
+    "all_factors": [
+      {
+        "feature": "eta_delay_days",
+        "value": 0.0,
+        "impact": 0.03491970681614541,
+        "direction": "positive"
+      },
+      {
+        "feature": "speed_anomaly_pct",
+        "value": 0.0,
+        "impact": 0.031099805991332493,
+        "direction": "positive"
+      },
+      {
+        "feature": "position_deviation_pct",
+        "value": 0.0,
+        "impact": 0.029098779248403827,
+        "direction": "positive"
+      },
+      {
+        "feature": "vessel_speed_knots",
+        "value": 19.3,
+        "impact": 0.013498710338335137,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_risk_score_7day",
+        "value": 0.15,
+        "impact": 0.002689949889219391,
+        "direction": "positive"
+      },
+      {
+        "feature": "weather_storm_risk",
+        "value": 0.1,
+        "impact": 0.0023522065087650834,
+        "direction": "positive"
+      },
+      {
+        "feature": "month",
+        "value": 4.0,
+        "impact": 0.0021020176863772236,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_sentiment_avg",
+        "value": 0.0,
+        "impact": 0.0013002542015145204,
+        "direction": "positive"
+      },
+      {
+        "feature": "route_distance_nm",
+        "value": 6500.0,
+        "impact": -0.0009860690584242574,
+        "direction": "negative"
+      },
+      {
+        "feature": "quarter",
+        "value": 2.0,
+        "impact": 0.0007938366370368247,
+        "direction": "positive"
+      },
+      {
+        "feature": "port_congestion_level",
+        "value": 0.25,
+        "impact": -0.0007190505476109709,
+        "direction": "negative"
+      },
+      {
+        "feature": "port_wait_time_ratio",
+        "value": 1.0,
+        "impact": -0.0005309060378986405,
+        "direction": "negative"
+      },
+      {
+        "feature": "is_peak_season",
+        "value": 0.0,
+        "impact": 0.00027637589853570383,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_sentiment_trend",
+        "value": 0.0,
+        "impact": 0.0002650902978048427,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_avg_delay",
+        "value": 0.3,
+        "impact": 0.0002642001094992921,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_event_frequency",
+        "value": 3.0,
+        "impact": 0.00024587527992911206,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_on_time_rate",
+        "value": 0.9,
+        "impact": 0.00019693789124307422,
+        "direction": "positive"
+      },
+      {
+        "feature": "is_typhoon_season",
+        "value": 0.0,
+        "impact": 0.0001660222127201656,
+        "direction": "positive"
+      },
+      {
+        "feature": "seasonal_risk_score",
+        "value": 0.1,
+        "impact": 0.00011972902655696097,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_reliability_score",
+        "value": 90.0,
+        "impact": 9.484350344522418e-05,
+        "direction": "positive"
+      },
+      {
+        "feature": "weather_wind_speed_avg",
+        "value": 15.0,
+        "impact": 4.865862936257115e-05,
+        "direction": "positive"
+      },
+      {
+        "feature": "route_complexity",
+        "value": 0.6,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "port_pair_risk",
+        "value": 0.4,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "day_of_week",
+        "value": 3.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "hist_disruption_count",
+        "value": 0.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "avg_hist_delay_days",
+        "value": 0.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_risk_score",
+        "value": 0.4,
+        "impact": 0.0,
+        "direction": "negative"
+      }
+    ],
+    "scenario": "LOW_RISK - Normal Conditions"
+  },
+  "MEDIUM_RISK - Peak Season": {
+    "prediction": "on_time",
+    "probability_on_time": 1.0,
+    "probability_delayed": 0.0,
+    "predicted_delay_days": 0.5108125000498971,
+    "top_factors": [
+      {
+        "feature": "speed_anomaly_pct",
+        "value": 0.0,
+        "impact": 0.037339264203047985,
+        "direction": "positive"
+      },
+      {
+        "feature": "eta_delay_days",
+        "value": 0.0,
+        "impact": 0.036154529404871745,
+        "direction": "positive"
+      },
+      {
+        "feature": "position_deviation_pct",
+        "value": 0.0,
+        "impact": 0.03128049118673564,
+        "direction": "positive"
+      },
+      {
+        "feature": "vessel_speed_knots",
+        "value": 19.3,
+        "impact": 0.013713129206211004,
+        "direction": "positive"
+      },
+      {
+        "feature": "month",
+        "value": 10.0,
+        "impact": -0.0020965242943230392,
+        "direction": "negative"
+      }
+    ],
+    "all_factors": [
+      {
+        "feature": "speed_anomaly_pct",
+        "value": 0.0,
+        "impact": 0.037339264203047985,
+        "direction": "positive"
+      },
+      {
+        "feature": "eta_delay_days",
+        "value": 0.0,
+        "impact": 0.036154529404871745,
+        "direction": "positive"
+      },
+      {
+        "feature": "position_deviation_pct",
+        "value": 0.0,
+        "impact": 0.03128049118673564,
+        "direction": "positive"
+      },
+      {
+        "feature": "vessel_speed_knots",
+        "value": 19.3,
+        "impact": 0.013713129206211004,
+        "direction": "positive"
+      },
+      {
+        "feature": "month",
+        "value": 10.0,
+        "impact": -0.0020965242943230392,
+        "direction": "negative"
+      },
+      {
+        "feature": "news_sentiment_avg",
+        "value": 0.0,
+        "impact": 0.0015635233768143636,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_risk_score_7day",
+        "value": 0.35,
+        "impact": -0.0014073918010918546,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_distance_nm",
+        "value": 6500.0,
+        "impact": -0.0011748945925896814,
+        "direction": "negative"
+      },
+      {
+        "feature": "port_wait_time_ratio",
+        "value": 1.3,
+        "impact": 0.0008607370237745205,
+        "direction": "positive"
+      },
+      {
+        "feature": "is_peak_season",
+        "value": 1.0,
+        "impact": -0.000655835251899488,
+        "direction": "negative"
+      },
+      {
+        "feature": "quarter",
+        "value": 2.0,
+        "impact": 0.0005561342380659156,
+        "direction": "positive"
+      },
+      {
+        "feature": "weather_storm_risk",
+        "value": 0.2,
+        "impact": -0.00034146199410707914,
+        "direction": "negative"
+      },
+      {
+        "feature": "news_event_frequency",
+        "value": 3.0,
+        "impact": 0.0003388723263176648,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_avg_delay",
+        "value": 0.3,
+        "impact": 0.00031517752274738616,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_sentiment_trend",
+        "value": 0.0,
+        "impact": 0.00020769507804106223,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_reliability_score",
+        "value": 90.0,
+        "impact": 0.00017580495530263184,
+        "direction": "positive"
+      },
+      {
+        "feature": "is_typhoon_season",
+        "value": 0.0,
+        "impact": 0.00015133427698530428,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_on_time_rate",
+        "value": 0.9,
+        "impact": 0.00014166071828088428,
+        "direction": "positive"
+      },
+      {
+        "feature": "port_congestion_level",
+        "value": 0.5,
+        "impact": 7.721295574559061e-05,
+        "direction": "positive"
+      },
+      {
+        "feature": "seasonal_risk_score",
+        "value": 0.1,
+        "impact": 6.113202958202983e-05,
+        "direction": "positive"
+      },
+      {
+        "feature": "weather_wind_speed_avg",
+        "value": 15.0,
+        "impact": 3.638395378044067e-05,
+        "direction": "positive"
+      },
+      {
+        "feature": "route_complexity",
+        "value": 0.6,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "port_pair_risk",
+        "value": 0.4,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "day_of_week",
+        "value": 3.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "hist_disruption_count",
+        "value": 0.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "avg_hist_delay_days",
+        "value": 0.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_risk_score",
+        "value": 0.4,
+        "impact": 0.0,
+        "direction": "negative"
+      }
+    ],
+    "scenario": "MEDIUM_RISK - Peak Season"
+  },
+  "HIGH_RISK - Typhoon Season": {
+    "prediction": "on_time",
+    "probability_on_time": 1.0,
+    "probability_delayed": 0.0,
+    "predicted_delay_days": 0.4610833126503422,
+    "top_factors": [
+      {
+        "feature": "eta_delay_days",
+        "value": 0.0,
+        "impact": 0.039594403291511336,
+        "direction": "positive"
+      },
+      {
+        "feature": "speed_anomaly_pct",
+        "value": 0.0,
+        "impact": 0.035914211233929946,
+        "direction": "positive"
+      },
+      {
+        "feature": "position_deviation_pct",
+        "value": 0.0,
+        "impact": 0.032891115110503334,
+        "direction": "positive"
+      },
+      {
+        "feature": "vessel_speed_knots",
+        "value": 19.3,
+        "impact": 0.015338787736977456,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_risk_score_7day",
+        "value": 0.55,
+        "impact": -0.0023137355707454807,
+        "direction": "negative"
+      }
+    ],
+    "all_factors": [
+      {
+        "feature": "eta_delay_days",
+        "value": 0.0,
+        "impact": 0.039594403291511336,
+        "direction": "positive"
+      },
+      {
+        "feature": "speed_anomaly_pct",
+        "value": 0.0,
+        "impact": 0.035914211233929946,
+        "direction": "positive"
+      },
+      {
+        "feature": "position_deviation_pct",
+        "value": 0.0,
+        "impact": 0.032891115110503334,
+        "direction": "positive"
+      },
+      {
+        "feature": "vessel_speed_knots",
+        "value": 19.3,
+        "impact": 0.015338787736977456,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_risk_score_7day",
+        "value": 0.55,
+        "impact": -0.0023137355707454807,
+        "direction": "negative"
+      },
+      {
+        "feature": "weather_storm_risk",
+        "value": 0.65,
+        "impact": -0.0017203307258481964,
+        "direction": "negative"
+      },
+      {
+        "feature": "news_sentiment_avg",
+        "value": 0.0,
+        "impact": 0.0013667699651247092,
+        "direction": "positive"
+      },
+      {
+        "feature": "port_congestion_level",
+        "value": 0.3,
+        "impact": -0.0012207444036576968,
+        "direction": "negative"
+      },
+      {
+        "feature": "weather_wind_speed_avg",
+        "value": 28.0,
+        "impact": -0.0011475538051511668,
+        "direction": "negative"
+      },
+      {
+        "feature": "month",
+        "value": 8.0,
+        "impact": -0.001142855830969268,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_distance_nm",
+        "value": 6500.0,
+        "impact": -0.001098324897979941,
+        "direction": "negative"
+      },
+      {
+        "feature": "port_wait_time_ratio",
+        "value": 1.0,
+        "impact": -0.0008454052931719629,
+        "direction": "negative"
+      },
+      {
+        "feature": "quarter",
+        "value": 2.0,
+        "impact": 0.0006917536901149935,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_avg_delay",
+        "value": 0.3,
+        "impact": 0.0004233499395103491,
+        "direction": "positive"
+      },
+      {
+        "feature": "is_peak_season",
+        "value": 0.0,
+        "impact": 0.00034494061368723445,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_sentiment_trend",
+        "value": 0.0,
+        "impact": 0.0003017305897563445,
+        "direction": "positive"
+      },
+      {
+        "feature": "is_typhoon_season",
+        "value": 1.0,
+        "impact": -0.0003002173794860176,
+        "direction": "negative"
+      },
+      {
+        "feature": "news_event_frequency",
+        "value": 3.0,
+        "impact": 0.0002709207015256931,
+        "direction": "positive"
+      },
+      {
+        "feature": "seasonal_risk_score",
+        "value": 0.4,
+        "impact": -0.0002527696212898973,
+        "direction": "negative"
+      },
+      {
+        "feature": "carrier_reliability_score",
+        "value": 90.0,
+        "impact": 0.00020971765811766494,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_on_time_rate",
+        "value": 0.9,
+        "impact": -8.788480166375973e-06,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_complexity",
+        "value": 0.6,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "port_pair_risk",
+        "value": 0.4,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "day_of_week",
+        "value": 3.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "hist_disruption_count",
+        "value": 0.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "avg_hist_delay_days",
+        "value": 0.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_risk_score",
+        "value": 0.4,
+        "impact": 0.0,
+        "direction": "negative"
+      }
+    ],
+    "scenario": "HIGH_RISK - Typhoon Season"
+  },
+  "CRITICAL_RISK - Multiple Factors": {
+    "prediction": "delayed",
+    "probability_on_time": 0.03,
+    "probability_delayed": 0.97,
+    "predicted_delay_days": 0.8505256411407978,
+    "top_factors": [
+      {
+        "feature": "eta_delay_days",
+        "value": 3.0,
+        "impact": -0.30293781681917265,
+        "direction": "negative"
+      },
+      {
+        "feature": "position_deviation_pct",
+        "value": 15.0,
+        "impact": -0.28831318403009176,
+        "direction": "negative"
+      },
+      {
+        "feature": "speed_anomaly_pct",
+        "value": -15.0,
+        "impact": -0.2644712010473991,
+        "direction": "negative"
+      },
+      {
+        "feature": "vessel_speed_knots",
+        "value": 19.3,
+        "impact": 0.013634981225186612,
+        "direction": "positive"
+      },
+      {
+        "feature": "port_wait_time_ratio",
+        "value": 1.0,
+        "impact": -0.006754753864282711,
+        "direction": "negative"
+      }
+    ],
+    "all_factors": [
+      {
+        "feature": "eta_delay_days",
+        "value": 3.0,
+        "impact": -0.30293781681917265,
+        "direction": "negative"
+      },
+      {
+        "feature": "position_deviation_pct",
+        "value": 15.0,
+        "impact": -0.28831318403009176,
+        "direction": "negative"
+      },
+      {
+        "feature": "speed_anomaly_pct",
+        "value": -15.0,
+        "impact": -0.2644712010473991,
+        "direction": "negative"
+      },
+      {
+        "feature": "vessel_speed_knots",
+        "value": 19.3,
+        "impact": 0.013634981225186612,
+        "direction": "positive"
+      },
+      {
+        "feature": "port_wait_time_ratio",
+        "value": 1.0,
+        "impact": -0.006754753864282711,
+        "direction": "negative"
+      },
+      {
+        "feature": "news_risk_score_7day",
+        "value": 0.6,
+        "impact": -0.005327614281152558,
+        "direction": "negative"
+      },
+      {
+        "feature": "weather_storm_risk",
+        "value": 0.7,
+        "impact": -0.0029908569721834913,
+        "direction": "negative"
+      },
+      {
+        "feature": "quarter",
+        "value": 2.0,
+        "impact": 0.0028791029538951718,
+        "direction": "positive"
+      },
+      {
+        "feature": "month",
+        "value": 9.0,
+        "impact": -0.002637040298667619,
+        "direction": "negative"
+      },
+      {
+        "feature": "port_congestion_level",
+        "value": 0.7,
+        "impact": 0.002204176044366343,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_event_frequency",
+        "value": 3.0,
+        "impact": 0.0021258983208005578,
+        "direction": "positive"
+      },
+      {
+        "feature": "news_sentiment_trend",
+        "value": 0.0,
+        "impact": -0.0019675142523107596,
+        "direction": "negative"
+      },
+      {
+        "feature": "carrier_avg_delay",
+        "value": 0.3,
+        "impact": 0.001835328707171575,
+        "direction": "positive"
+      },
+      {
+        "feature": "is_peak_season",
+        "value": 1.0,
+        "impact": -0.001456878909919664,
+        "direction": "negative"
+      },
+      {
+        "feature": "news_sentiment_avg",
+        "value": 0.0,
+        "impact": 0.0013821151861053832,
+        "direction": "positive"
+      },
+      {
+        "feature": "is_typhoon_season",
+        "value": 1.0,
+        "impact": -0.0006964228530826732,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_distance_nm",
+        "value": 6500.0,
+        "impact": -0.0006369348454794585,
+        "direction": "negative"
+      },
+      {
+        "feature": "seasonal_risk_score",
+        "value": 0.1,
+        "impact": 0.0006235691688337555,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_reliability_score",
+        "value": 90.0,
+        "impact": 0.0005849140564041247,
+        "direction": "positive"
+      },
+      {
+        "feature": "weather_wind_speed_avg",
+        "value": 15.0,
+        "impact": 0.0003172860894817589,
+        "direction": "positive"
+      },
+      {
+        "feature": "carrier_on_time_rate",
+        "value": 0.9,
+        "impact": -0.0001001790562098254,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_complexity",
+        "value": 0.6,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "port_pair_risk",
+        "value": 0.4,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "day_of_week",
+        "value": 3.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "hist_disruption_count",
+        "value": 5.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "avg_hist_delay_days",
+        "value": 0.0,
+        "impact": 0.0,
+        "direction": "negative"
+      },
+      {
+        "feature": "route_risk_score",
+        "value": 0.4,
+        "impact": 0.0,
+        "direction": "negative"
+      }
+    ],
+    "scenario": "CRITICAL_RISK - Multiple Factors"
+  }
+}

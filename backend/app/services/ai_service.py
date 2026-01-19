@@ -28,7 +28,7 @@ class AIService:
         else:
             self.model = None
             self.available = False
-            print("⚠️ Gemini API key not configured")
+            pass  # API key not configured
     
     async def explain_risk(self, risk_data: Dict) -> Dict:
         """

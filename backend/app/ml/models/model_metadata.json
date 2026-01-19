@@ -1,0 +1,50 @@
+{
+  "model_type": "RandomForestClassifier + IsolationForest (Hybrid)",
+  "trained_at": "2026-01-16T19:09:27.945673",
+  "feature_columns": [
+    "speed",
+    "heading_change",
+    "distance_from_route",
+    "time_since_update",
+    "acceleration",
+    "latitude",
+    "longitude",
+    "vessel_type",
+    "hour_of_day",
+    "port_proximity",
+    "traffic_density",
+    "weather_severity",
+    "historical_deviation",
+    "course_over_ground_diff"
+  ],
+  "metrics": {
+    "accuracy": 0.96,
+    "precision": 1.0,
+    "recall": 0.8,
+    "f1_score": 0.888888888888889,
+    "false_positive_rate": 0.0,
+    "missed_detection_rate": 0.2,
+    "optimal_threshold": 0.9574810694743777,
+    "confusion_matrix": [
+      [
+        1600,
+        0
+      ],
+      [
+        80,
+        320
+      ]
+    ],
+    "train_size": 12776,
+    "test_size": 2000
+  },
+  "optimal_threshold": 0.9574810694743777,
+  "version": "2.0.0",
+  "improvements": [
+    "SMOTE-Tomek class balancing",
+    "Class weighting (3x for anomalies)",
+    "Threshold optimization for 80% recall",
+    "Enhanced 14-feature input",
+    "Random Forest for supervised learning"
+  ]
+}

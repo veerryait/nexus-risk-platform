@@ -1,0 +1,27 @@
+{
+  "random_forest_classifier": {
+    "type": "classification",
+    "accuracy": 0.9920382165605095,
+    "precision": 0.992831541218638,
+    "recall": 0.9981981981981982,
+    "f1": 0.995507637017071,
+    "auc": 0.9998025422682957
+  },
+  "xgboost_classifier": {
+    "type": "classification",
+    "accuracy": 0.9920382165605095,
+    "precision": 0.992831541218638,
+    "recall": 0.9981981981981982,
+    "f1": 0.995507637017071,
+    "auc": 0.9997778600518327
+  },
+  "random_forest_regressor": {
+    "type": "regression",
+    "mae": 0.4998988451842097,
+    "rmse": 0.7791569797301879,
+    "r2": -0.10707748558104324
+  },
+  "risk_category": {
+    "overall_accuracy": 0.28503184713375795
+  }
+}

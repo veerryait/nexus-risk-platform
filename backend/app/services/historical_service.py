@@ -27,9 +27,13 @@ class HistoricalService:
         if os.path.exists(json_path):
             with open(json_path, 'r') as f:
                 self._data = json.load(f)
-            print(f"Loaded historical data from {json_path}")
+            # Log success without exposing file paths
+            import logging
+            logging.getLogger(__name__).info("Historical data loaded successfully")
         else:
-            print(f"No historical data found at {json_path}")
+            # Log warning without exposing file paths
+            import logging
+            logging.getLogger(__name__).warning("Historical data not found, using defaults")
             # Use empty defaults if no data
             self._data = {
                 "transits": [],

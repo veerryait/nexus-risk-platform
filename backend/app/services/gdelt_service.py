@@ -84,7 +84,9 @@ class GDELTService:
                         "risk_contribution": self._calculate_event_risk(article, theme),
                     })
         except Exception as e:
-            print(f"GDELT API error: {e}")
+            # Log privately, don't expose API error details
+            import logging
+            logging.getLogger("nexus.security").error(f"GDELT API error: {type(e).__name__}")
             # Return mock events on error
             events = self._mock_events(theme)
         
