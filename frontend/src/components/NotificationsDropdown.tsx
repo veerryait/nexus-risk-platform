@@ -55,7 +55,8 @@ export function NotificationsDropdown() {
     // Fetch notifications from API
     const fetchNotifications = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/notifications?limit=10');
+            const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+            const response = await fetch(`${API_BASE}/api/v1/notifications?limit=10`);
             if (response.ok) {
                 const data = await response.json();
                 setNotifications(data.notifications || []);

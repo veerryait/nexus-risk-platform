@@ -58,7 +58,8 @@ export default function NotificationsPage() {
     // Fetch notifications from API
     const fetchNotifications = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/notifications?limit=50');
+            const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+            const response = await fetch(`${API_BASE}/api/v1/notifications?limit=50`);
             if (response.ok) {
                 const data = await response.json();
                 setNotifications(data.notifications || []);
@@ -169,16 +170,16 @@ export default function NotificationsPage() {
                             key={btn.value}
                             onClick={() => setFilter(btn.value)}
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${filter === btn.value
-                                    ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25'
-                                    : 'bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700'
+                                ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25'
+                                : 'bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700'
                                 }`}
                         >
                             <span>{btn.icon}</span>
                             <span className="hidden sm:inline">{btn.label}</span>
                             {btn.value === 'all' && (
                                 <span className={`ml-1 px-1.5 py-0.5 text-xs rounded-full ${filter === btn.value
-                                        ? 'bg-white/20 text-white'
-                                        : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400'
+                                    ? 'bg-white/20 text-white'
+                                    : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400'
                                     }`}>
                                     {notifications.length}
                                 </span>
@@ -221,8 +222,8 @@ export default function NotificationsPage() {
                                 <div
                                     key={notification.id}
                                     className={`bg-white dark:bg-zinc-900 rounded-xl border transition-all ${!isRead
-                                            ? 'border-sky-500/30 shadow-lg shadow-sky-500/5'
-                                            : 'border-zinc-200 dark:border-zinc-800'
+                                        ? 'border-sky-500/30 shadow-lg shadow-sky-500/5'
+                                        : 'border-zinc-200 dark:border-zinc-800'
                                         }`}
                                 >
                                     <button
