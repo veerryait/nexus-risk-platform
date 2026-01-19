@@ -10,6 +10,8 @@ This module provides:
 import logging
 import traceback
 import uuid
+import os
+from pathlib import Path
 from datetime import datetime
 from typing import Optional
 from fastapi import Request, HTTPException
@@ -20,12 +22,22 @@ from starlette.middleware.base import BaseHTTPMiddleware
 logger = logging.getLogger("nexus.security")
 logger.setLevel(logging.ERROR)
 
-# File handler for private error logs
-file_handler = logging.FileHandler("logs/error_private.log")
-file_handler.setFormatter(logging.Formatter(
-    '%(asctime)s - %(levelname)s - [%(error_id)s] - %(message)s'
-))
-logger.addHandler(file_handler)
+# Try to create file handler, fallback to console if logs directory can't be created
+try:
+    logs_dir = Path("logs")
+    logs_dir.mkdir(exist_ok=True)
+    file_handler = logging.FileHandler(logs_dir / "error_private.log")
+    file_handler.setFormatter(logging.Formatter(
+        '%(asctime)s - %(levelname)s - [%(error_id)s] - %(message)s'
+    ))
+    logger.addHandler(file_handler)
+except Exception:
+    # Fallback to console logging in production/Docker environments
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(message)s'
+    ))
+    logger.addHandler(console_handler)
 
 
 class SecureErrorMiddleware(BaseHTTPMiddleware):
