@@ -3,8 +3,7 @@ Application Configuration
 """
 
 import os
-from typing import List, Any
-from pydantic import field_validator
+from typing import List
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
@@ -18,7 +17,7 @@ class Settings(BaseSettings):
     APP_SECRET_KEY: str = "change_this_to_a_secure_random_string"
     
     # Database
-    DATABASE_URL: str = ""
+    DATABASE_URL: str = "sqlite:///./test.db"  # Default to SQLite if not set
     DB_HOST: str = ""
     DB_PORT: int = 6543
     DB_NAME: str = "postgres"
@@ -30,20 +29,19 @@ class Settings(BaseSettings):
     SUPABASE_ANON_KEY: str = ""
     SUPABASE_SERVICE_ROLE_KEY: str = ""
     
-    # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+    # CORS - stored as comma-separated string
+    CORS_ORIGINS_STR: str = "http://localhost:3000,http://localhost:5173,https://*.vercel.app,https://*.railway.app"
+    
+    @property
+    def CORS_ORIGINS(self) -> List[str]:
+        """Parse CORS origins from comma-separated string"""
+        origins = [o.strip() for o in self.CORS_ORIGINS_STR.split(",") if o.strip()]
+        return origins if origins else ["*"]
     
     # External APIs
     MARINE_TRAFFIC_API_KEY: str = ""
     OPENWEATHER_API_KEY: str = ""
     NEWS_API_KEY: str = ""
-    
-    @classmethod
-    @field_validator("CORS_ORIGINS", mode="before")
-    def parse_cors_origins(cls, v: Any) -> List[str]:
-        if isinstance(v, str) and not v.strip().startswith("["):
-            return [i.strip() for i in v.split(",")]
-        return v
     
     class Config:
         env_file = ".env"
