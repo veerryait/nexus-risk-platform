@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     SUPABASE_SERVICE_ROLE_KEY: str = ""
     
     # CORS - stored as comma-separated string, use cors_origins_list property
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,https://*.vercel.app,https://*.railway.app"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,https://nexus-risk-platform-vedq.vercel.app,https://nexus-risk-platform-production.up.railway.app"
     
     @property
     def cors_origins_list(self) -> List[str]:
