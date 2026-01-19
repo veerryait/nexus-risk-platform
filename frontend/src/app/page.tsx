@@ -24,18 +24,18 @@ interface Route {
 }
 
 interface Stats {
-  activeRoutes: number;
-  highRiskRoutes: number;
-  avgDelay: number;
-  onTimeRate: number;
+  totalRoutes: number;
+  activeShipments: number;
+  avgOnTime: number;
+  highRiskCount: number;
 }
 
 export default function OverviewPage() {
   const [stats, setStats] = useState<Stats>({
-    activeRoutes: 0,
-    highRiskRoutes: 0,
-    avgDelay: 0,
-    onTimeRate: 95
+    totalRoutes: 0,
+    activeShipments: 0,
+    avgOnTime: 95,
+    highRiskCount: 0
   });
   const [loading, setLoading] = useState(true);
   const [connectionStatus, setConnectionStatus] = useState<'connected' | 'disconnected' | 'checking'>('checking');
@@ -74,10 +74,10 @@ export default function OverviewPage() {
       }
 
       setStats({
-        activeRoutes: routes.length,
-        highRiskRoutes: highRisk,
-        avgDelay: routes.length > 0 ? totalDelay / Math.min(routes.length, 5) : 0,
-        onTimeRate: routes.length > 0 ? Math.round((onTime / Math.min(routes.length, 5)) * 100) : 95
+        totalRoutes: routes.length,
+        activeShipments: Math.min(routes.length, 5),
+        avgOnTime: routes.length > 0 ? Math.round((onTime / Math.min(routes.length, 5)) * 100) : 95,
+        highRiskCount: highRisk
       });
     } catch (error) {
       console.error('Failed to fetch data:', error);
@@ -129,7 +129,7 @@ export default function OverviewPage() {
                   href="/routes"
                   icon="🚢"
                   title="Track Routes"
-                  value={`${stats.activeRoutes} active`}
+                  value={`${stats.totalRoutes} active`}
                 />
                 <QuickLink
                   href="/risk"
