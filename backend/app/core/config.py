@@ -29,13 +29,13 @@ class Settings(BaseSettings):
     SUPABASE_ANON_KEY: str = ""
     SUPABASE_SERVICE_ROLE_KEY: str = ""
     
-    # CORS - stored as comma-separated string
-    CORS_ORIGINS_STR: str = "http://localhost:3000,http://localhost:5173,https://*.vercel.app,https://*.railway.app"
+    # CORS - stored as comma-separated string, use cors_origins_list property
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,https://*.vercel.app,https://*.railway.app"
     
     @property
-    def CORS_ORIGINS(self) -> List[str]:
+    def cors_origins_list(self) -> List[str]:
         """Parse CORS origins from comma-separated string"""
-        origins = [o.strip() for o in self.CORS_ORIGINS_STR.split(",") if o.strip()]
+        origins = [o.strip() for o in self.CORS_ORIGINS.split(",") if o.strip()]
         return origins if origins else ["*"]
     
     # External APIs
