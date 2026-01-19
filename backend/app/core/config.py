@@ -3,7 +3,8 @@ Application Configuration
 """
 
 import os
-from typing import List
+from typing import List, Any
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
@@ -36,6 +37,13 @@ class Settings(BaseSettings):
     MARINE_TRAFFIC_API_KEY: str = ""
     OPENWEATHER_API_KEY: str = ""
     NEWS_API_KEY: str = ""
+    
+    @classmethod
+    @field_validator("CORS_ORIGINS", mode="before")
+    def parse_cors_origins(cls, v: Any) -> List[str]:
+        if isinstance(v, str) and not v.strip().startswith("["):
+            return [i.strip() for i in v.split(",")]
+        return v
     
     class Config:
         env_file = ".env"
