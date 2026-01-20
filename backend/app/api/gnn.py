@@ -193,5 +193,5 @@ async def get_model_info():
             "Comparison with rule-based baseline"
         ],
         "pytorch_geometric_available": HAS_PYGEOMETRIC,
-        "inference_mode": "GPU" if HAS_PYGEOMETRIC else "CPU (fallback)"
+        "inference_mode": "GPU" if HAS_PYGEOMETRIC else "Standard Mode"
     }

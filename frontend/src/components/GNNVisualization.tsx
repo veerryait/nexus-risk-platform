@@ -162,12 +162,6 @@ export function GNNVisualization() {
                     </p>
                 </div>
                 <div className="text-right">
-                    <div className="flex items-center gap-2">
-                        <div className={`w-2 h-2 rounded-full ${predictions.model_info.uses_pytorch ? 'bg-emerald-500' : 'bg-amber-500'} animate-pulse`}></div>
-                        <span className="text-xs text-zinc-400">
-                            {predictions.model_info.uses_pytorch ? 'PyTorch' : 'NumPy'} Backend
-                        </span>
-                    </div>
                     <p className="text-3xl font-bold text-white mt-1">{predictions.network_risk_score}%</p>
                     <p className="text-xs text-zinc-500">Overall Network Risk</p>
                 </div>
@@ -188,8 +182,8 @@ export function GNNVisualization() {
                                 key={port.port_code}
                                 onClick={() => handlePortClick(port.port_code)}
                                 className={`relative p-4 rounded-xl border transition-all hover:scale-[1.02] ${selectedPort === port.port_code
-                                        ? 'ring-2 ring-cyan-500 border-cyan-500'
-                                        : getRiskBgClass(port.risk_level)
+                                    ? 'ring-2 ring-cyan-500 border-cyan-500'
+                                    : getRiskBgClass(port.risk_level)
                                     }`}
                             >
                                 <div className="flex items-center justify-between mb-2">
@@ -231,8 +225,8 @@ export function GNNVisualization() {
                                 key={port.port_code}
                                 onClick={() => handlePortClick(port.port_code)}
                                 className={`relative p-4 rounded-xl border transition-all hover:scale-[1.02] ${selectedPort === port.port_code
-                                        ? 'ring-2 ring-cyan-500 border-cyan-500'
-                                        : getRiskBgClass(port.risk_level)
+                                    ? 'ring-2 ring-cyan-500 border-cyan-500'
+                                    : getRiskBgClass(port.risk_level)
                                     }`}
                             >
                                 <div className="flex items-center justify-between mb-2">
@@ -317,8 +311,8 @@ export function GNNVisualization() {
                                         <div
                                             key={result.port_code}
                                             className={`flex items-center gap-3 p-3 rounded-lg ${result.is_source
-                                                    ? 'bg-rose-500/20 border border-rose-500/50'
-                                                    : 'bg-zinc-800/50'
+                                                ? 'bg-rose-500/20 border border-rose-500/50'
+                                                : 'bg-zinc-800/50'
                                                 }`}
                                         >
                                             <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-700 flex items-center justify-center text-sm font-bold text-white">
@@ -335,8 +329,8 @@ export function GNNVisualization() {
                                                         )}
                                                     </span>
                                                     <span className={`font-bold ${result.cascade_risk_increase >= 60 ? 'text-rose-400' :
-                                                            result.cascade_risk_increase >= 30 ? 'text-orange-400' :
-                                                                'text-amber-400'
+                                                        result.cascade_risk_increase >= 30 ? 'text-orange-400' :
+                                                            'text-amber-400'
                                                         }`}>
                                                         +{result.cascade_risk_increase}%
                                                     </span>
