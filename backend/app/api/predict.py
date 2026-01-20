@@ -5,7 +5,7 @@ POST /api/v1/predict - Make risk predictions for routes
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Union
 from datetime import datetime
 
 from app.services.prediction_service import prediction_service
@@ -15,7 +15,7 @@ router = APIRouter()
 
 class RouteInput(BaseModel):
     """Input schema for route prediction"""
-    route_id: str = Field(default="TWKHH-USLAX", description="Route identifier")
+    route_id: Union[str, int] = Field(default="TWKHH-USLAX", description="Route identifier")
     origin: str = Field(default="TWKHH", description="Origin port code")
     destination: str = Field(default="USLAX", description="Destination port code")
     distance_nm: float = Field(default=6500, description="Distance in nautical miles")
@@ -58,7 +58,7 @@ class RouteInput(BaseModel):
 
 class PredictionResult(BaseModel):
     """Output schema for prediction"""
-    route_id: str
+    route_id: Union[str, int]
     prediction: Dict
     factors: List[Dict]
     recommendations: List[str]
