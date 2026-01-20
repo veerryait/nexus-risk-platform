@@ -4,6 +4,7 @@
 > *AI-powered disruption prediction for global semiconductor supply chains.*
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://nexus-risk-platform-vedq.vercel.app)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/veerryait/nexus-risk-platform/data-collection.yml?label=Data%20Collection)](https://github.com/veerryait/nexus-risk-platform/actions)
 [![API Docs](https://img.shields.io/badge/API-Documentation-blue)](https://nexus-risk-platform-production.up.railway.app/docs)
 [![License](https://img.shields.io/badge/License-MIT-gray)](LICENSE)
 
