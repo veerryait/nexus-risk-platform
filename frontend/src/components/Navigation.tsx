@@ -17,6 +17,7 @@ const navigation: NavItem[] = [
     { name: 'Model', href: '/model-performance', icon: '📈', description: 'Accuracy tracking' },
     { name: 'Operations', href: '/operations', icon: '⚙️', description: 'Ports & weather' },
     { name: 'Scenarios', href: '/scenarios', icon: '🎯', description: 'What-if simulations' },
+    { name: 'Contact', href: '/contact', icon: '📞', description: 'Get in touch' },
 ];
 
 export function Navigation() {
